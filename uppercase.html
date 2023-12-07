@@ -1,0 +1,107 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Words to UpperCase</title>
+     <!-- Font Awesome -->
+     <link
+     href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+     rel="stylesheet"
+     />
+     <!-- Google Fonts -->
+     <link
+     href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
+     rel="stylesheet"
+     />
+     <!-- MDB -->
+     <link
+     href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.2.0/mdb.min.css"
+     rel="stylesheet"
+     />
+   <style>
+    
+     
+     .btn-primary{
+         /* background-color:#7202c7; */
+         background-color: #7208c1;
+         /* shadow:none; */
+         margin-top: 10px;
+         
+     }
+     .btn-secondary{
+       background-color:#8ab5f5;
+       color:black;
+       margin-top: 10px;
+     }
+     .btn-primary:hover{
+         background-color:white;
+         color:black;
+         border-bottom:1px solid #7202c7;
+         margin-top: 10px;
+     }
+     body{
+         background-color:#f5f4f4;
+     }
+     .navbar{
+         background-color:white;
+     }
+     .p-color{
+       color: #7202c7;
+   }
+     
+     .logo{
+       color: #840fdf;
+     }
+     
+ 
+   </style>
+       
+ 
+</head>
+<body>
+    <div class="container mt-3">
+        <div class="card shadow-0 border p-md-4 p-2 mt-2">
+          <div class="text-center mt-2">
+            <h1>Uppercase Converter</h1>
+            <p>Free textfixer tool to convert letter into uppercase.</p>
+          </div>
+          <hr>
+        
+            <!-- <p>Type your letter below:</p> -->
+            <textarea id="user-input" rows="10" cols="50" class="form-control mt-4" placeholder="Enter text here.."></textarea>
+            <div>
+                <button onclick="convertToUppercase()" class="btn btn-primary">Convert </button>
+                <button onclick="copyToClipboard()" class="btn btn-secondary">Copy </button>
+                <button onclick="downloadText()" class="btn btn-secondary">Download</button>
+            </div>
+            <!-- <p>Converted Text:</p> -->
+            <textarea id="output" rows="10" cols="50" class="form-control mt-3" placeholder="Output will be here.."></textarea>
+        </div>
+    </div>
+    
+        <script>
+            function convertToUppercase() {
+                var inputText = document.getElementById("user-input").value;
+                var outputText = inputText.toUpperCase();
+                document.getElementById("output").value = outputText;
+            }
+    
+            function copyToClipboard() {
+                var outputText = document.getElementById("output");
+                outputText.select();
+                document.execCommand("copy");
+                alert("Text copied to clipboard!");
+            }
+    
+            function downloadText() {
+                var outputText = document.getElementById("output").value;
+                var blob = new Blob([outputText], {type: "text/plain;charset=utf-8"});
+                saveAs(blob, "converted-text.txt");
+            }
+        </script>
+    
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
+</body>
+</html>
